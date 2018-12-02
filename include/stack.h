@@ -14,6 +14,18 @@ namespace pstructs
         int size;
         int capacity;
         
+        void copyStack(const stack& other)
+        {
+            this->size = other.size;
+            this->capacity = other.capacity;
+
+            this->data = new T[this->capacity];
+            for (int i = 0; i < this->capacity; i++)
+            {
+                this->data[i] = other.data[i];
+            }
+        }
+        
         void growStack()
         {
             int newCapacity = this->capacity * 2;
@@ -31,6 +43,24 @@ namespace pstructs
         }
     public:
         stack() : data(new T[INIT_CAP]), size(0), capacity(INIT_CAP) {}
+        
+        ~stack() 
+        {
+            delete[] this->data;
+        }
+
+        stack(const stack& other)
+        {
+            this->copyStack(other);
+        }
+
+        stack& operator=(const stack& other)
+        {
+            delete[] this->data;
+            this->copyStack(other);
+
+            return *this;
+        }
 
         T pop()
         {

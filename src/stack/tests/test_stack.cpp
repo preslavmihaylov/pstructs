@@ -16,6 +16,8 @@ CPPUNIT_TEST(test_growingStack);
 CPPUNIT_TEST(test_poppingOneElement);
 CPPUNIT_TEST_EXCEPTION(test_poppingEmptyStack, std::invalid_argument);
 CPPUNIT_TEST_EXCEPTION(test_peekingEmptyStack, std::invalid_argument);
+CPPUNIT_TEST(test_copyConstructor);
+CPPUNIT_TEST(test_assignmentOperator);
 
 CPPUNIT_TEST_SUITE_END();
 
@@ -91,6 +93,45 @@ public:
     {
         CPPUNIT_ASSERT(st->getSize() == 0);
         st->peek();
+    }
+
+    void test_copyConstructor()
+    {
+        st->push(1); 
+        st->push(2); 
+        st->push(3); 
+        st->push(4); 
+        st->push(5); 
+
+        pstructs::stack<int> otherStack(*st);
+
+        for (int i = 5; i >= 1; i--)
+        {
+            int element = otherStack.pop();
+            CPPUNIT_ASSERT(element == i);
+        }
+
+        CPPUNIT_ASSERT(st->getSize() == 5);
+    }
+
+    void test_assignmentOperator()
+    {
+        st->push(1); 
+        st->push(2); 
+        st->push(3); 
+        st->push(4); 
+        st->push(5); 
+
+        pstructs::stack<int> otherStack;
+        otherStack = *st;
+
+        for (int i = 5; i >= 1; i--)
+        {
+            int element = otherStack.pop();
+            CPPUNIT_ASSERT(element == i);
+        }
+
+        CPPUNIT_ASSERT(st->getSize() == 5);
     }
 };
 
