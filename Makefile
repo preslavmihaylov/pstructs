@@ -18,22 +18,11 @@ all: tests
 
 rebuild: clean all
 
-tests: tests_run
+tests: tests_build
 
 tests_build:
 	@for i in $(PROJECTS); do \
 		$(MAKE) -C $$i test; \
-	done
-
-tests_run: tests_build
-	@for i in $(PROJECTS); do \
-		echo "TESTING $$i"; \
-		./$$i/tests/tests.exe; \
-	done
-
-target_src:
-	@for i in $(PROJECTS); do \
-		$(MAKE) -C $$i target; \
 	done
 
 clean_src:
@@ -41,3 +30,4 @@ clean_src:
 		$(MAKE) -C $$i clean; \
 	done
 
+clean: clean_src
