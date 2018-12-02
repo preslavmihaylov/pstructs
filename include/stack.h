@@ -1,5 +1,5 @@
-#ifndef PSTRUCT_STACK_H
-#define PSTRUCT_STACK_H
+#ifndef PSTRUCTS_STACK_H
+#define PSTRUCTS_STACK_H
 
 #include <stdexcept>
 
