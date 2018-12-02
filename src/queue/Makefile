@@ -12,13 +12,15 @@ TESTS_SOURCES=$(shell find $(TESTS_DIR) -name '*.cpp')
 TESTS_OBJECTS=$(TESTS_SOURCES:%.cpp=%.o)
 TESTS_TARGET=$(TESTS_DIR)/tests.exe
 
-all: target
-
-target: build $(SLIB_TARGET)
+all: test
 
 rebuild: clean all
 
 test: $(TESTS_TARGET)
+	./tests/tests.exe
+
+mem_check: $(TESTS_TARGET)
+	valgrind --leak-check=yes --tool=memcheck ./tests/tests.exe
 
 $(TESTS_DIR)/%.o: $(TESTS_DIR)/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@ 
