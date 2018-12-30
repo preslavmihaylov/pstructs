@@ -4,13 +4,12 @@
 #include <stdexcept>
 #include <iostream>
 
-#define INIT_CAP 4
-
 namespace pstructs
 {
     template<class T>
     class queue
     {
+        static const int INIT_CAP = 4;
         T *data;
         int head;
         int tail;

@@ -3,13 +3,12 @@
 
 #include <stdexcept>
 
-#define INIT_CAP 4
-
 namespace pstructs
 {
     template<class T>
     class stack
     {
+        static const int INIT_CAP = 4;
         T *data;
         int size;
         int capacity;

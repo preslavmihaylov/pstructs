@@ -4,7 +4,7 @@
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/TestFixture.h>
 #include <cppunit/TestAssert.h>
-#include <stack.h>
+#include <pstructs/stack.h>
 #include <iostream>
 
 class StackTest : public CppUnit::TestFixture {

@@ -4,7 +4,7 @@
 #include <cppunit/ui/text/TestRunner.h>
 #include <cppunit/TestFixture.h>
 #include <cppunit/TestAssert.h>
-#include <queue.h>
+#include <pstructs/queue.h>
 #include <iostream>
 
 class QueueTest : public CppUnit::TestFixture {
