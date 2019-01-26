@@ -39,6 +39,7 @@ public:
         st->push(5);
         CPPUNIT_ASSERT(st->getSize() == 1);
         CPPUNIT_ASSERT(st->peek() == 5);
+        CPPUNIT_ASSERT(false);
     }
 
     void test_addingTwoElements()
