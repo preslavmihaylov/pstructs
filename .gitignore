@@ -5,3 +5,4 @@ bin/
 *.gcda
 *.gcno
 compile_commands.json
+coverage/
