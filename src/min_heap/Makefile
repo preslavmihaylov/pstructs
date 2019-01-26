@@ -20,7 +20,7 @@ test: $(TESTS_TARGET)
 	./tests/tests.exe
 
 mem_check: $(TESTS_TARGET)
-	valgrind --leak-check=yes --tool=memcheck ./tests/tests.exe
+	valgrind --leak-check=yes --error-exitcode=1 --tool=memcheck ./tests/tests.exe
 
 $(TESTS_DIR)/%.o: $(TESTS_DIR)/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@ 
