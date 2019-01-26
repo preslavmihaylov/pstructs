@@ -3,7 +3,7 @@ INC_DIR=$(abspath ./include)
 
 CC=g++
 INCLUDES=-I. -I$(INC_DIR)
-CFLAGS=-g -O2 -Wall -Wextra -Werror -Wno-unused-function \
+CFLAGS=-g -O2 -std=c++11 -Wall -Wextra -Werror -Wno-unused-function \
        -Wno-unused-parameter -Wno-address -rdynamic -DNDEBUG\
        $(INCLUDES) $(OPTFLAGS)
 
