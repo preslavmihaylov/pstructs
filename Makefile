@@ -12,7 +12,9 @@ export CFLAGS
 export INCLUDES
 
 PROJECTS=$(SRC_DIR)/stack \
-         $(SRC_DIR)/queue
+         $(SRC_DIR)/queue \
+         $(SRC_DIR)/min_heap \
+         $(SRC_DIR)/max_heap
 
 all: tests
 
