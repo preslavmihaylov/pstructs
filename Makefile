@@ -37,19 +37,15 @@ mem_check:
 	done; \
 	exit $$EXIT_CODE;
 
-coverage:
-	@rm coverage/* || true
-	mkdir coverage || true
-	gcovr --version
+coverage: build
 	gcovr -e ".*tests/.*" -o coverage/report_raw.txt || true
 	cat coverage/report_raw.txt
 	@./check_cov.sh
 
-detailed_coverage:
-	@rm coverage/* || true
-	@mkdir coverage || true
+detailed_coverage: build
 	gcovr -e ".*tests/.*" --html --html-details -o coverage/report.html
 	gcovr -e ".*tests/.*" -o coverage/report_raw.txt
+	cat coverage/report_raw.txt
 	@./check_cov.sh
 
 clean: clean_src
@@ -58,3 +54,8 @@ clean_src:
 	@for i in $(PROJECTS); do \
 		$(MAKE) -C $$i clean; \
 	done
+
+build:
+	@rm coverage/* || true
+	mkdir coverage || true
+
