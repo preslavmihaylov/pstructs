@@ -4,7 +4,8 @@ INC_DIR=$(abspath ./include)
 CC=g++
 INCLUDES=-I. -I$(INC_DIR)
 CFLAGS=-g -O2 -std=c++11 -Wall -Wextra -Werror -Wno-unused-function \
-       -Wno-unused-parameter -Wno-address -rdynamic -DNDEBUG\
+       -Wno-unused-parameter -Wno-address -rdynamic -DNDEBUG \
+       -fprofile-arcs -ftest-coverage \
        $(INCLUDES) $(OPTFLAGS)
 
 export CC
@@ -17,6 +18,8 @@ PROJECTS=$(SRC_DIR)/stack \
          $(SRC_DIR)/max_heap
 
 EXIT_CODE=0
+
+.PHONY: coverage
 
 all: tests
 
@@ -34,9 +37,13 @@ mem_check:
 	done; \
 	exit $$EXIT_CODE;
 
+coverage:
+	rm coverage/*
+	gcovr -e ".*tests/.*" --html --html-details -o coverage/report.html
+
+clean: clean_src
+
 clean_src:
 	@for i in $(PROJECTS); do \
 		$(MAKE) -C $$i clean; \
 	done
-
-clean: clean_src
