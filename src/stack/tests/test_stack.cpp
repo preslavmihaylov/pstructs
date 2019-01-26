@@ -141,6 +141,9 @@ int main(int argc, const char* argv[])
 
     runner.addTest(StackTest::suite());
     runner.run();
+    
+    char *a = new char('a');
+    (void)a;
 
     return runner.result().testFailures();
 }
