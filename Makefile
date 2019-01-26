@@ -41,6 +41,7 @@ coverage:
 	@rm coverage/* || true
 	@mkdir coverage || true
 	gcovr -e ".*tests/.*" -o coverage/report_raw.txt
+	@cat coverage/report.txt
 	@./check_cov.sh
 
 detailed_coverage:
