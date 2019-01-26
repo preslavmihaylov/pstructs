@@ -39,9 +39,10 @@ mem_check:
 
 coverage:
 	@rm coverage/* || true
-	@mkdir coverage || true
-	gcovr -e ".*tests/.*" -o coverage/report_raw.txt
-	@cat coverage/report.txt
+	mkdir coverage || true
+	gcovr --version
+	gcovr -e ".*tests/.*" -o coverage/report_raw.txt || true
+	cat coverage/report_raw.txt
 	@./check_cov.sh
 
 detailed_coverage:
