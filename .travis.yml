@@ -1,5 +1,5 @@
 language: cpp
-script: make && make mem_check
+script: make && make mem_check && make coverage
 before_install:
     - sudo apt-get update
     - sudo apt-get install -y libcppunit-dev

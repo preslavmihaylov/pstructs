@@ -40,6 +40,8 @@ mem_check:
 coverage:
 	rm coverage/*
 	gcovr -e ".*tests/.*" --html --html-details -o coverage/report.html
+	gcovr -e ".*tests/.*" -o coverage/report_raw.txt
+	@./check_cov.sh || exit -1;
 
 clean: clean_src
 
