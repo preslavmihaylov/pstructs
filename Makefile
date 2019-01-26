@@ -38,7 +38,7 @@ mem_check:
 	exit $$EXIT_CODE;
 
 coverage:
-	rm coverage/*
+	@rm coverage/* || true
 	gcovr -e ".*tests/.*" --html --html-details -o coverage/report.html
 	gcovr -e ".*tests/.*" -o coverage/report_raw.txt
 	@./check_cov.sh || exit -1;
