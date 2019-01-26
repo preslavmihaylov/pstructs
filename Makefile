@@ -24,12 +24,12 @@ tests: tests_build
 
 mem_check:
 	@for i in $(PROJECTS); do \
-		$(MAKE) -C $$i mem_check; \
+		$(MAKE) -C $$i mem_check || exit $$?; \
 	done
 
 tests_build:
 	@for i in $(PROJECTS); do \
-		$(MAKE) -C $$i test; \
+		$(MAKE) -C $$i test || exit $$?; \
 	done
 
 clean_src:
