@@ -19,7 +19,7 @@ PROJECTS=$(SRC_DIR)/stack \
 
 EXIT_CODE=0
 
-.PHONY: coverage
+.PHONY: coverage detailed_coverage
 
 all: tests
 
@@ -38,6 +38,11 @@ mem_check:
 	exit $$EXIT_CODE;
 
 coverage:
+	@rm coverage/* || true
+	gcovr -e ".*tests/.*" -o coverage/report_raw.txt
+	@./check_cov.sh || exit -1;
+
+detailed_coverage:
 	@rm coverage/* || true
 	gcovr -e ".*tests/.*" --html --html-details -o coverage/report.html
 	gcovr -e ".*tests/.*" -o coverage/report_raw.txt
