@@ -2,4 +2,6 @@ bin/
 *.swp
 *.o
 *.exe
+*.gcda
+*.gcno
 compile_commands.json
