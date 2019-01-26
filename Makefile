@@ -16,21 +16,23 @@ PROJECTS=$(SRC_DIR)/stack \
          $(SRC_DIR)/min_heap \
          $(SRC_DIR)/max_heap
 
+EXIT_CODE=0
+
 all: tests
 
 rebuild: clean all
 
-tests: tests_build
+tests:
+	@for i in $(PROJECTS); do \
+		$(MAKE) -C $$i test || EXIT_CODE=$$?; \
+	done; \
+	exit $$EXIT_CODE;
 
 mem_check:
 	@for i in $(PROJECTS); do \
-		$(MAKE) -C $$i mem_check || exit $$?; \
-	done
-
-tests_build:
-	@for i in $(PROJECTS); do \
-		$(MAKE) -C $$i test || exit $$?; \
-	done
+		$(MAKE) -C $$i mem_check || EXIT_CODE=$$?; \
+	done; \
+	exit $$EXIT_CODE;
 
 clean_src:
 	@for i in $(PROJECTS); do \
