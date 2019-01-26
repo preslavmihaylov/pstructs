@@ -25,6 +25,8 @@ namespace pstructs
 
         T pop()
         {
+            if (data.size() <= 1) throw std::invalid_argument("size is zero");
+
             T popped = data[1];
             int index = 1;
             data[index] = data[data.size() - 1];
@@ -60,17 +62,19 @@ namespace pstructs
 
         T peek()
         {
+            if (data.size() <= 1) throw std::invalid_argument("size is zero");
+
             return data[1];
         }
 
         int getSize()
         {
-            return data.size();
+            return data.size() - 1;
         }
 
         bool isEmpty()
         {
-            return getSize() == 0;
+            return getSize() == 1;
         }
 
     protected:
