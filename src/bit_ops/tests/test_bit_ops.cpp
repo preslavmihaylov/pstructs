@@ -24,6 +24,8 @@ CPPUNIT_TEST(test_raiseBitBigNumber);
 CPPUNIT_TEST(test_setBitBigNumber);
 CPPUNIT_TEST(test_setBitZero);
 CPPUNIT_TEST(test_setBitOne);
+CPPUNIT_TEST(test_getBitOne);
+CPPUNIT_TEST(test_getBitZero);
 
 CPPUNIT_TEST_SUITE_END();
 
@@ -98,6 +100,18 @@ public:
     {
         int res = pstructs::bit_ops::setBit(13, 1, 1);
         CPPUNIT_ASSERT(res == 15);
+    }
+
+    void test_getBitOne()
+    {
+        int res = pstructs::bit_ops::getBit(13, 2);
+        CPPUNIT_ASSERT(res == 1);
+    }
+
+    void test_getBitZero()
+    {
+        int res = pstructs::bit_ops::getBit(13, 1);
+        CPPUNIT_ASSERT(res == 0);
     }
 };
 
