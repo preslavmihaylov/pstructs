@@ -15,7 +15,8 @@ export INCLUDES
 PROJECTS=$(SRC_DIR)/stack \
          $(SRC_DIR)/queue \
          $(SRC_DIR)/min_heap \
-         $(SRC_DIR)/max_heap
+         $(SRC_DIR)/max_heap \
+         $(SRC_DIR)/bit_ops \
 
 EXIT_CODE=0
 
