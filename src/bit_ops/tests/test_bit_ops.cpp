@@ -29,6 +29,9 @@ CPPUNIT_TEST(test_getBitZero);
 CPPUNIT_TEST(test_toBinaryStringFifteen);
 CPPUNIT_TEST(test_toBinaryStringMinusOne);
 CPPUNIT_TEST(test_toBinaryStringOneSeventy);
+CPPUNIT_TEST(test_binaryStringToNumber_1101);
+CPPUNIT_TEST(test_binaryStringToNumber_11111111);
+CPPUNIT_TEST(test_binaryStringToNumber_0);
 
 CPPUNIT_TEST_SUITE_END();
 
@@ -132,6 +135,24 @@ public:
     {
         string res = pstructs::bit_ops::toBinaryString(170);
         CPPUNIT_ASSERT(res == "10101010");
+    }
+
+    void test_binaryStringToNumber_1101()
+    {
+        uint32_t res = pstructs::bit_ops::binaryStringToNumber("1101");
+        CPPUNIT_ASSERT(res == 13);
+    }
+
+    void test_binaryStringToNumber_11111111()
+    {
+        uint32_t res = pstructs::bit_ops::binaryStringToNumber("11111111");
+        CPPUNIT_ASSERT(res == 255);
+    }
+
+    void test_binaryStringToNumber_0()
+    {
+        uint32_t res = pstructs::bit_ops::binaryStringToNumber("0");
+        CPPUNIT_ASSERT(res == 0);
     }
 };
 
