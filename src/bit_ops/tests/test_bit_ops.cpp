@@ -32,6 +32,7 @@ CPPUNIT_TEST(test_toBinaryStringOneSeventy);
 CPPUNIT_TEST(test_binaryStringToNumber_1101);
 CPPUNIT_TEST(test_binaryStringToNumber_11111111);
 CPPUNIT_TEST(test_binaryStringToNumber_0);
+CPPUNIT_TEST(test_binaryStringToNumber_lvalue);
 
 CPPUNIT_TEST_SUITE_END();
 
@@ -153,6 +154,13 @@ public:
     {
         uint32_t res = pstructs::bit_ops::binaryStringToNumber("0");
         CPPUNIT_ASSERT(res == 0);
+    }
+
+    void test_binaryStringToNumber_lvalue()
+    {
+        string input = "1111";
+        uint32_t res = pstructs::bit_ops::binaryStringToNumber(input);
+        CPPUNIT_ASSERT(res == 15);
     }
 };
 
